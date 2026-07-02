@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}} — Recepten</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{BASE_URL}}/{{SLUG}}/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:image" content="{{BASE_URL}}/{{SLUG}}/hero.jpg">
+  <meta property="og:url" content="{{BASE_URL}}/{{SLUG}}/">
+  <link rel="stylesheet" href="/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    "name": "{{TITLE}}",
+    "description": "{{DESCRIPTION}}",
+    "image": ["{{BASE_URL}}/{{SLUG}}/hero.jpg"],
+    "inLanguage": "nl",
+    "author": { "@type": "Person", "name": "Eran Jalink" },
+    "datePublished": "{{DATE}}",
+    "recipeYield": "{{YIELD}}",
+    "prepTime": "{{PREP_TIME_ISO}}",
+    "cookTime": "{{COOK_TIME_ISO}}",
+    "totalTime": "{{TOTAL_TIME_ISO}}",
+    "recipeCategory": "{{CATEGORY}}",
+    "recipeCuisine": "{{CUISINE}}",
+    "keywords": "{{KEYWORDS}}",
+    "recipeIngredient": {{INGREDIENTS_JSON}},
+    "recipeInstructions": {{STEPS_JSON}}
+  }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <a href="/" class="back-link">← Alle recepten</a>
+    <img class="hero" src="hero.jpg" alt="{{TITLE}}">
+    <header class="recipe-header">
+      <h1>{{TITLE}}</h1>
+      <p class="description">{{DESCRIPTION}}</p>
+    </header>
+
+    <div class="facts">
+      <span class="fact">🍽 {{YIELD}}</span>
+      <span class="fact">⏱ Voorbereiding: {{PREP_TIME_HUMAN}}</span>
+      <span class="fact">🔥 Bereiding: {{COOK_TIME_HUMAN}}</span>
+      <span class="fact">Σ Totaal: {{TOTAL_TIME_HUMAN}}</span>
+    </div>
+
+    <section>
+      <h2>Ingrediënten</h2>
+      <ul class="ingredients">
+{{INGREDIENTS_HTML}}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Bereiding</h2>
+      <ol class="steps">
+{{STEPS_HTML}}
+      </ol>
+    </section>
+
+    <p class="source">{{SOURCE}}</p>
+    <footer>Importeer in Pestle: deel deze URL naar de app.</footer>
+  </div>
+</body>
+</html>

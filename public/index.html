@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recepten — Eran</title>
+  <meta name="description" content="Verzameling recepten, importeerbaar in Pestle.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <h1>🍳 Recepten</h1>
+      <p>Deel een recept-URL naar Pestle om te importeren.</p>
+    </header>
+
+    <div class="recipe-grid">
+      <!-- RECIPES:START -->
+      <!-- RECIPES:END -->
+    </div>
+
+    <p class="empty-state" id="empty">Nog geen recepten — stuur Jarvis een screenshot.</p>
+
+    <footer>Gegenereerd door Jarvis · gehost op Cloudflare Workers</footer>
+  </div>
+  <script>
+    if (document.querySelector('.recipe-card')) document.getElementById('empty').remove();
+  </script>
+</body>
+</html>

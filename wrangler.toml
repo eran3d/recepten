@@ -1,0 +1,7 @@
+name = "recepten"
+compatibility_date = "2026-07-02"
+
+# Workers met static assets — geen Worker script nodig voor pure static site.
+# Deploy command in CF Workers Builds: npx wrangler deploy
+[assets]
+directory = "./public"
