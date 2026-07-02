@@ -1,0 +1,32 @@
+name: Decode binary assets
+
+# Jarvis kan vanuit Cowork alleen tekst pushen (GitHub MCP).
+# Binaire assets (hero.jpg) worden als .b64 gepusht; deze workflow
+# decodeert ze en commit het resultaat. CF deployt daarna de nieuwe commit.
+
+on:
+  push:
+    branches: [main]
+    paths: ["**/*.b64"]
+
+permissions:
+  contents: write
+
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode alle .b64 files
+        run: |
+          find . -name "*.b64" -not -path "./.git/*" | while read f; do
+            base64 -d "$f" > "${f%.b64}"
+            rm "$f"
+            echo "decoded: ${f%.b64}"
+          done
+      - name: Commit resultaat
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || (git commit -m "CI: decode binary assets" && git push)
