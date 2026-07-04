@@ -14,23 +14,28 @@
       <p>Deel een recept-URL naar Pestle om te importeren.</p>
     </header>
 
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Zoek een recept…" autocomplete="off" aria-label="Zoek een recept">
+      <div class="chips" id="chips"></div>
+    </div>
+
     <div class="recipe-grid">
       <!-- RECIPES:START -->
-      <a class="recipe-card" href="/ninja-creami-yoghurt-softijs/">
+      <a class="recipe-card" href="/ninja-creami-yoghurt-softijs/" data-category="Dessert" data-keywords="ninja creami, yoghurt, frozen yogurt, softijs, ijs, licht">
         <img src="/ninja-creami-yoghurt-softijs/hero.jpg" alt="Ninja Creami yoghurt-softijs" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami yoghurt-softijs</h2>
           <p class="meta">Dessert · 24 uur 10 min</p>
         </div>
       </a>
-      <a class="recipe-card" href="/ninja-creami-bananenijs/">
+      <a class="recipe-card" href="/ninja-creami-bananenijs/" data-category="Dessert" data-keywords="ninja creami, banaan, bananenijs, ijs, roomijs, milkshake">
         <img src="/ninja-creami-bananenijs/hero.jpg" alt="Ninja Creami bananenijs" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami bananenijs</h2>
           <p class="meta">Dessert · 24 uur 10 min</p>
         </div>
       </a>
-      <a class="recipe-card" href="/ninja-creami-mangoijs-light/">
+      <a class="recipe-card" href="/ninja-creami-mangoijs-light/" data-category="Dessert" data-keywords="ninja creami, mango, mangoijs, gezond, light, yoghurtijs">
         <img src="/ninja-creami-mangoijs-light/hero.jpg" alt="Ninja Creami mangoijs light" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami mangoijs light</h2>
@@ -38,7 +43,7 @@
         </div>
       </a>
 
-      <a class="recipe-card" href="/ninja-creami-mangoijs/">
+      <a class="recipe-card" href="/ninja-creami-mangoijs/" data-category="Dessert" data-keywords="ninja creami, mango, mangoijs, ijs, zomerijs, roomijs">
         <img src="/ninja-creami-mangoijs/hero.jpg" alt="Ninja Creami mangoijs" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami mangoijs</h2>
@@ -46,7 +51,7 @@
         </div>
       </a>
 
-      <a class="recipe-card" href="/ninja-creami-cookies-cream/">
+      <a class="recipe-card" href="/ninja-creami-cookies-cream/" data-category="Dessert" data-keywords="ninja creami, cookies and cream, oreo, roomijs, ijs">
         <img src="/ninja-creami-cookies-cream/hero.jpg" alt="Ninja Creami cookies & cream" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami cookies & cream</h2>
@@ -54,7 +59,7 @@
         </div>
       </a>
 
-      <a class="recipe-card" href="/ninja-creami-proteine-vanille-ijs/">
+      <a class="recipe-card" href="/ninja-creami-proteine-vanille-ijs/" data-category="Dessert" data-keywords="ninja creami, proteïne, eiwit, vanille, fitness, gezond">
         <img src="/ninja-creami-proteine-vanille-ijs/hero.jpg" alt="Ninja Creami proteïne-vanille-ijs" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami proteïne-vanille-ijs</h2>
@@ -62,7 +67,7 @@
         </div>
       </a>
 
-      <a class="recipe-card" href="/ninja-creami-aardbeiensorbet/">
+      <a class="recipe-card" href="/ninja-creami-aardbeiensorbet/" data-category="Dessert" data-keywords="ninja creami, aardbei, sorbet, zuivelvrij, vegan, fruit">
         <img src="/ninja-creami-aardbeiensorbet/hero.jpg" alt="Ninja Creami aardbeiensorbet" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami aardbeiensorbet</h2>
@@ -70,7 +75,7 @@
         </div>
       </a>
 
-      <a class="recipe-card" href="/ninja-creami-chocolade-roomijs/">
+      <a class="recipe-card" href="/ninja-creami-chocolade-roomijs/" data-category="Dessert" data-keywords="ninja creami, chocolade, roomijs, cacao, ijs">
         <img src="/ninja-creami-chocolade-roomijs/hero.jpg" alt="Ninja Creami chocolade-roomijs" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami chocolade-roomijs</h2>
@@ -78,28 +83,28 @@
         </div>
       </a>
 
-      <a class="recipe-card" href="/ninja-creami-vanille-roomijs/">
+      <a class="recipe-card" href="/ninja-creami-vanille-roomijs/" data-category="Dessert" data-keywords="ninja creami, vanille, roomijs, ijs, basisrecept">
         <img src="/ninja-creami-vanille-roomijs/hero.jpg" alt="Ninja Creami vanille-roomijs" loading="lazy">
         <div class="card-body">
           <h2>Ninja Creami vanille-roomijs</h2>
           <p class="meta">Dessert · 24 uur 10 min</p>
         </div>
       </a>
-      <a class="recipe-card" href="/3-ingredienten-ananas-dole-whip-creami/">
+      <a class="recipe-card" href="/3-ingredienten-ananas-dole-whip-creami/" data-category="Dessert" data-keywords="ninjacreami, ninjacreamirecepten, ananas dole whip, gezonde dessertrecepten">
         <img src="/3-ingredienten-ananas-dole-whip-creami/hero.jpg" alt="3-Ingrediënten Ananas Dole Whip Creami" loading="lazy">
         <div class="card-body">
           <h2>3-Ingrediënten Ananas Dole Whip Creami</h2>
           <p class="meta">Dessert · 24 uur 5 min</p>
         </div>
       </a>
-      <a class="recipe-card" href="/de-beste-huisgemaakte-butter-chicken/">
+      <a class="recipe-card" href="/de-beste-huisgemaakte-butter-chicken/" data-category="Hoofdgerecht" data-keywords="butter chicken, kip, indiaas, gezond, eiwitrijk, curry, diner, kipgerecht">
         <img src="/de-beste-huisgemaakte-butter-chicken/hero.jpg" alt="De beste huisgemaakte Butter Chicken" loading="lazy">
         <div class="card-body">
           <h2>De beste huisgemaakte Butter Chicken</h2>
           <p class="meta">Hoofdgerecht · 55 min</p>
         </div>
       </a>
-      <a class="recipe-card" href="/overnight-oats-pindakaas-chocolade/">
+      <a class="recipe-card" href="/overnight-oats-pindakaas-chocolade/" data-category="Ontbijt" data-keywords="overnight oats, havermout, pindakaas, chocolade, chiazaad, ontbijt, meal prep">
         <img src="/overnight-oats-pindakaas-chocolade/hero.jpg" alt="Overnight oats met pindakaas en chocolade" loading="lazy">
         <div class="card-body">
           <h2>Overnight oats met pindakaas en chocolade</h2>
@@ -109,12 +114,55 @@
       <!-- RECIPES:END -->
     </div>
 
+    <p class="empty-state" id="no-results" hidden>Geen recepten gevonden.</p>
+
     <p class="empty-state" id="empty">Nog geen recepten — stuur Jarvis een screenshot.</p>
 
     <footer>Gegenereerd door Jarvis · gehost op Cloudflare Workers</footer>
   </div>
   <script>
     if (document.querySelector('.recipe-card')) document.getElementById('empty').remove();
+
+    (function () {
+      const cards = Array.from(document.querySelectorAll('.recipe-card'));
+      const input = document.getElementById('search');
+      const chipsEl = document.getElementById('chips');
+      const noResults = document.getElementById('no-results');
+      let activeCat = '';
+
+      const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const catOf = c => c.dataset.category || (c.querySelector('.meta')?.textContent.split('\u00b7')[0].trim() ?? '');
+
+      const counts = {};
+      cards.forEach(c => { const k = catOf(c); if (k) counts[k] = (counts[k] || 0) + 1; });
+      const cats = Object.keys(counts).sort((a, b) => a.localeCompare(b, 'nl'));
+
+      function chip(label, value, count) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.dataset.cat = value;
+        b.textContent = count == null ? label : `${label} (${count})`;
+        b.addEventListener('click', () => { activeCat = value; apply(); });
+        return b;
+      }
+      chipsEl.append(chip('Alles', '', null), ...cats.map(c => chip(c, c, counts[c])));
+
+      function apply() {
+        const q = norm(input.value.trim());
+        let shown = 0;
+        cards.forEach(c => {
+          const hay = norm(`${c.querySelector('h2').textContent} ${c.dataset.keywords || ''} ${catOf(c)}`);
+          const ok = (!activeCat || catOf(c) === activeCat) && (!q || hay.includes(q));
+          c.classList.toggle('is-hidden', !ok);
+          if (ok) shown++;
+        });
+        chipsEl.querySelectorAll('.chip').forEach(b => b.classList.toggle('is-active', b.dataset.cat === activeCat));
+        noResults.hidden = shown > 0;
+      }
+      input.addEventListener('input', apply);
+      apply();
+    })();
   </script>
 </body>
 </html>
