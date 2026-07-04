@@ -142,36 +142,56 @@
       const input = document.getElementById('search');
       const chipsEl = document.getElementById('chips');
       const noResults = document.getElementById('no-results');
-      let activeCat = '';
 
       const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const squash = s => norm(s).replace(/\s+/g, '');
       const catOf = c => c.dataset.category || (c.querySelector('.meta')?.textContent.split('\u00b7')[0].trim() ?? '');
+      const hayOf = c => `${c.querySelector('h2').textContent} ${c.dataset.keywords || ''} ${catOf(c)}`;
+
+      // Tag-chips: keyword-gebaseerd, dwars door categorieen heen
+      const TAGS = [
+        { label: 'Ninja Creami', match: c => squash(hayOf(c)).includes('ninjacreami') },
+      ];
+
+      let active = { type: 'all', value: '' };
+      const passes = c => {
+        if (active.type === 'cat') return catOf(c) === active.value;
+        if (active.type === 'tag') return TAGS[active.value].match(c);
+        return true;
+      };
 
       const counts = {};
       cards.forEach(c => { const k = catOf(c); if (k) counts[k] = (counts[k] || 0) + 1; });
       const cats = Object.keys(counts).sort((a, b) => a.localeCompare(b, 'nl'));
 
-      function chip(label, value, count) {
+      function chip(label, type, value, count) {
         const b = document.createElement('button');
         b.type = 'button';
         b.className = 'chip';
-        b.dataset.cat = value;
+        b.dataset.type = type;
+        b.dataset.value = String(value);
         b.textContent = count == null ? label : `${label} (${count})`;
-        b.addEventListener('click', () => { activeCat = value; apply(); });
+        b.addEventListener('click', () => { active = { type, value }; apply(); });
         return b;
       }
-      chipsEl.append(chip('Alles', '', null), ...cats.map(c => chip(c, c, counts[c])));
+      chipsEl.append(
+        chip('Alles', 'all', '', null),
+        ...cats.map(c => chip(c, 'cat', c, counts[c])),
+        ...TAGS.map((t, i) => ({ t, i, n: cards.filter(t.match).length }))
+          .filter(x => x.n > 0)
+          .map(x => chip(x.t.label, 'tag', x.i, x.n))
+      );
 
       function apply() {
         const q = norm(input.value.trim());
         let shown = 0;
         cards.forEach(c => {
-          const hay = norm(`${c.querySelector('h2').textContent} ${c.dataset.keywords || ''} ${catOf(c)}`);
-          const ok = (!activeCat || catOf(c) === activeCat) && (!q || hay.includes(q));
+          const ok = passes(c) && (!q || norm(hayOf(c)).includes(q));
           c.classList.toggle('is-hidden', !ok);
           if (ok) shown++;
         });
-        chipsEl.querySelectorAll('.chip').forEach(b => b.classList.toggle('is-active', b.dataset.cat === activeCat));
+        chipsEl.querySelectorAll('.chip').forEach(b =>
+          b.classList.toggle('is-active', b.dataset.type === active.type && b.dataset.value === String(active.value)));
         noResults.hidden = shown > 0;
       }
       input.addEventListener('input', apply);
