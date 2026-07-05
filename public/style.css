@@ -80,6 +80,44 @@ body {
 
 .recipe-card.is-hidden { display: none; }
 
+/* ---------- Toevoegen-formulier ---------- */
+.submit-form { display: flex; flex-direction: column; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-label { font-size: 0.9rem; font-weight: 600; }
+.field input[type="file"],
+.field input[type="password"],
+.field textarea {
+  font: inherit;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 11px 14px;
+  outline: none;
+}
+.field textarea { resize: vertical; }
+.field input:focus, .field textarea:focus { border-color: var(--accent); }
+.field-pin input { max-width: 160px; letter-spacing: 0.2em; }
+.submit-btn {
+  font: inherit;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 22px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+.submit-btn:hover { filter: brightness(1.05); }
+.submit-btn:disabled { opacity: 0.6; cursor: default; }
+.status { padding: 4px 0; }
+.status.ok { color: #2f7a3d; }
+.status.err { color: #b3261e; }
+
+.add-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+.add-link:hover { text-decoration: underline; }
+
 /* ---------- Recept ---------- */
 .back-link { display: inline-block; margin-bottom: 16px; color: var(--muted); text-decoration: none; font-size: 0.9rem; }
 .back-link:hover { color: var(--accent); }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recept toevoegen — Recepten</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <a class="back-link" href="/">← Alle recepten</a>
+
+    <header class="site-header">
+      <h1>➕ Recept toevoegen</h1>
+      <p>Upload een foto of screenshot, of plak de tekst. Jarvis vertaalt, maakt er een pagina van en genereert een foto — het recept staat er binnen ±10 minuten op.</p>
+    </header>
+
+    <form id="form" class="submit-form">
+      <label class="field">
+        <span class="field-label">Foto of screenshot</span>
+        <input type="file" id="photo" name="photo" accept="image/*">
+      </label>
+
+      <label class="field">
+        <span class="field-label">…of plak het recept als tekst</span>
+        <textarea id="text" name="text" rows="10" placeholder="Titel, ingrediënten, bereidingswijze — mag in elke taal, elke opmaak."></textarea>
+      </label>
+
+      <label class="field field-pin">
+        <span class="field-label">PIN</span>
+        <input type="password" id="pin" name="pin" inputmode="numeric" autocomplete="off" required>
+      </label>
+
+      <button type="submit" id="submit" class="submit-btn">Versturen</button>
+      <p class="status" id="status" hidden></p>
+    </form>
+
+    <footer>Gegenereerd door Jarvis · gehost op Cloudflare Workers</footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('form');
+    const status = document.getElementById('status');
+    const btn = document.getElementById('submit');
+    const pinEl = document.getElementById('pin');
+
+    try { pinEl.value = localStorage.getItem('recepten-pin') || ''; } catch {}
+
+    function show(msg, kind) {
+      status.textContent = msg;
+      status.className = 'status ' + (kind || '');
+      status.hidden = false;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const photo = document.getElementById('photo').files[0];
+      const text = document.getElementById('text').value.trim();
+      if (!photo && !text) { show('Voeg een foto of tekst toe.', 'err'); return; }
+
+      btn.disabled = true;
+      show('Versturen…');
+      const fd = new FormData();
+      if (photo) fd.append('photo', photo);
+      if (text) fd.append('text', text);
+      fd.append('pin', pinEl.value);
+
+      try {
+        const res = await fetch('/api/submit', { method: 'POST', body: fd });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          try { localStorage.setItem('recepten-pin', pinEl.value); } catch {}
+          form.reset();
+          try { pinEl.value = localStorage.getItem('recepten-pin') || ''; } catch {}
+          show('✅ Ontvangen! Jarvis verwerkt het recept — het verschijnt binnen ±10 minuten op de voorpagina.', 'ok');
+        } else {
+          show('⚠️ ' + (data.error || `Er ging iets mis (${res.status})`), 'err');
+        }
+      } catch {
+        show('⚠️ Netwerkfout — probeer het nog eens.', 'err');
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
