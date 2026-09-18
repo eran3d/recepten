@@ -44,17 +44,17 @@
     </header>
 
     <div class="facts">
-      <span class="fact">🍽 {{YIELD}}</span>
-      <span class="fact">⏱ Voorbereiding: {{PREP_TIME_HUMAN}}</span>
-      <span class="fact">🔥 Bereiding: {{COOK_TIME_HUMAN}}</span>
-      <span class="fact">Σ Totaal: {{TOTAL_TIME_HUMAN}}</span>
+      <span class="fact"><span class="fact-ico">🍽</span>{{YIELD}}</span>
+      <span class="fact"><span class="fact-ico">⏱</span>{{PREP_TIME_HUMAN}} voorbereiden</span>
+      <span class="fact"><span class="fact-ico">🔥</span>{{COOK_TIME_HUMAN}} bereiden</span>
+      <span class="fact"><span class="fact-ico">Σ</span>{{TOTAL_TIME_HUMAN}} totaal</span>
     </div>
 
     <section>
       <h2>Ingrediënten</h2>
-      <ul class="ingredients">
+      <div class="ingredients">
 {{INGREDIENTS_HTML}}
-      </ul>
+      </div>
     </section>
 
     <section>
@@ -65,7 +65,13 @@
     </section>
 
     <p class="source">{{SOURCE}}</p>
+    <p class="print-url">{{TITLE}} — {{BASE_URL}}/{{SLUG}}/</p>
     <footer>Importeer in Pestle: deel deze URL naar de app.</footer>
   </div>
+  <script>
+    document.querySelectorAll('.ingredients li').forEach(function (li) {
+      li.addEventListener('click', function () { li.classList.toggle('done'); });
+    });
+  </script>
 </body>
 </html>
