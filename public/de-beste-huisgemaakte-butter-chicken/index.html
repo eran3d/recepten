@@ -44,44 +44,59 @@
     </header>
 
     <div class="facts">
-      <span class="fact">🍽 2 porties</span>
-      <span class="fact">⏱ Voorbereiding: 20 min</span>
-      <span class="fact">🔥 Bereiding: 35 min</span>
-      <span class="fact">Σ Totaal: 55 min</span>
+      <span class="fact"><span class="fact-ico">🍽</span>2 porties</span>
+      <span class="fact"><span class="fact-ico">⏱</span>20 min voorbereiden</span>
+      <span class="fact"><span class="fact-ico">🔥</span>35 min bereiden</span>
+      <span class="fact"><span class="fact-ico">Σ</span>55 min totaal</span>
     </div>
 
     <section>
       <h2>Ingrediënten</h2>
-      <ul class="ingredients">
-        <li>300 g kipfilet, in blokjes</li>
-        <li>2 el magere Griekse yoghurt (voor kip)</li>
-        <li>1 tl gehakte knoflook (voor kip)</li>
-        <li>1 tl gehakte gember (voor kip)</li>
-        <li>1 tl olijfolie</li>
-        <li>1 el garam masala (voor kip)</li>
-        <li>1/2 tl kurkuma (voor kip)</li>
-        <li>1/2 tl paprikapoeder (voor kip)</li>
-        <li>1/2 tl chilipoeder (voor kip)</li>
-        <li>1/2 tl zout (voor kip)</li>
-        <li>1/2 tl peper (voor kip)</li>
-        <li>2 tl boter</li>
-        <li>1 middelgrote ui, gesnipperd</li>
-        <li>1 tl gehakte knoflook (voor saus)</li>
-        <li>1 tl gehakte gember (voor saus)</li>
-        <li>1 el tomatenpuree</li>
-        <li>360 ml geplette tomaten (uit blik)</li>
-        <li>1 el garam masala (voor saus)</li>
-        <li>1/2 tl kurkuma (voor saus)</li>
-        <li>1/2 tl paprikapoeder (voor saus)</li>
-        <li>1/2 tl chilipoeder (voor saus)</li>
-        <li>1/2 tl zout (voor saus)</li>
-        <li>1/2 tl peper (voor saus)</li>
-        <li>80 ml magere Griekse yoghurt (voor saus)</li>
-        <li>2 tl honing</li>
-        <li>optioneel: 120 ml melk of water (om saus te verdunnen)</li>
-        <li>verse koriander (voor garnering)</li>
-        <li>yoghurt of kokosmelk (voor garnering)</li>
-      </ul>
+      <div class="ingredients">
+        <div class="ing-group">
+          <h3>Voor de kip</h3>
+          <ul>
+            <li><b class="q">300 g</b> kipfilet, in blokjes</li>
+            <li><b class="q">2 el</b> magere Griekse yoghurt</li>
+            <li><b class="q">1 tl</b> gehakte knoflook</li>
+            <li><b class="q">1 tl</b> gehakte gember</li>
+            <li><b class="q">1 tl</b> olijfolie</li>
+            <li><b class="q">1 el</b> garam masala</li>
+            <li><b class="q">1/2 tl</b> kurkuma</li>
+            <li><b class="q">1/2 tl</b> paprikapoeder</li>
+            <li><b class="q">1/2 tl</b> chilipoeder</li>
+            <li><b class="q">1/2 tl</b> zout</li>
+            <li><b class="q">1/2 tl</b> peper</li>
+          </ul>
+        </div>
+        <div class="ing-group">
+          <h3>Voor de saus</h3>
+          <ul>
+            <li><b class="q">2 tl</b> boter</li>
+            <li><b class="q">1</b> middelgrote ui, gesnipperd</li>
+            <li><b class="q">1 tl</b> gehakte knoflook</li>
+            <li><b class="q">1 tl</b> gehakte gember</li>
+            <li><b class="q">1 el</b> tomatenpuree</li>
+            <li><b class="q">360 ml</b> geplette tomaten (uit blik)</li>
+            <li><b class="q">1 el</b> garam masala</li>
+            <li><b class="q">1/2 tl</b> kurkuma</li>
+            <li><b class="q">1/2 tl</b> paprikapoeder</li>
+            <li><b class="q">1/2 tl</b> chilipoeder</li>
+            <li><b class="q">1/2 tl</b> zout</li>
+            <li><b class="q">1/2 tl</b> peper</li>
+            <li><b class="q">80 ml</b> magere Griekse yoghurt</li>
+            <li><b class="q">2 tl</b> honing</li>
+            <li><b class="q">120 ml</b> melk of water — optioneel, om de saus te verdunnen</li>
+          </ul>
+        </div>
+        <div class="ing-group">
+          <h3>Om te serveren</h3>
+          <ul>
+            <li>verse koriander</li>
+            <li>yoghurt of kokosmelk</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -99,7 +114,13 @@
     </section>
 
     <p class="source"></p>
+    <p class="print-url">De beste huisgemaakte Butter Chicken — recepten.jal.ink/de-beste-huisgemaakte-butter-chicken/</p>
     <footer>Importeer in Pestle: deel deze URL naar de app.</footer>
   </div>
+  <script>
+    document.querySelectorAll('.ingredients li').forEach(function (li) {
+      li.addEventListener('click', function () { li.classList.toggle('done'); });
+    });
+  </script>
 </body>
 </html>
